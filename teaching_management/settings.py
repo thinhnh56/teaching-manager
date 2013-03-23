@@ -77,6 +77,7 @@ STATICFILES_DIRS = (
 # List of finder classes that know how to find static files in
 # various locations.
 STATICFILES_FINDERS = (
+
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
@@ -87,6 +88,7 @@ SECRET_KEY = 'bv!x)=7*-&who2n36g7y6uy7px27fiwo_jm3qwmm#h^21x32j7'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
+	
     'django.template.loaders.filesystem.Loader',
     'django.template.loaders.app_directories.Loader',
 #     'django.template.loaders.eggs.Loader',
@@ -103,7 +105,8 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'teaching_management.urls'
 
 TEMPLATE_DIRS = (
-    # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
+    'C:/Users/thinh/teaching-manager/teaching_management/Template',
+	# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
@@ -118,6 +121,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'teaching_management.lecturer',
+	'teaching_management.non_staff_user'
 )
 
 # A sample logging configuration. The only tangible logging
