@@ -105,7 +105,7 @@ MIDDLEWARE_CLASSES = (
 ROOT_URLCONF = 'teaching_management.urls'
 
 TEMPLATE_DIRS = (
-    'C:/Users/thinh/teaching-manager/teaching_management/Template',
+    'C:/Users/thinh/Documents/GitHub/teaching-manager/teaching_management/Template',
 	# Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
