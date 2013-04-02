@@ -1,0 +1,25 @@
+# Create your views here.
+from django.contrib import auth
+from django.http import HttpResponse
+from django.shortcuts import render_to_response
+
+def profile(request):
+	if request.user.is_authenticated :
+		return render_to_response("base.html")
+	else:
+		return HttpResponse("Failed")
+		
+def sheduler(request):
+	if not request.user.is_authenticated:
+		return HttpResponse('wrong')
+		
+	return render_to_response("sheduler.html" )
+	
+def lecturer(request):
+	return render_to_response("lecturer.html")
+def subject(request):
+	return render_to_response("subject.html")
+def program(request):
+	return render_to_response("program.html")
+def statistic(request):
+	return render_to_response("statistic.html")

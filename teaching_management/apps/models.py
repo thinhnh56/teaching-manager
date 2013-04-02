@@ -1,0 +1,29 @@
+from django.db import models
+
+# Create your models here.
+
+		
+class Program(models.Model):
+	name = models.CharField(max_length = 30)
+	credits = models.IntegerField()
+	
+	def __unicode__(self):
+		return self.name
+		
+class Subject(models.Model):
+	name = models.CharField(max_length = 30)
+	ID = models.CharField(max_length = 10, primary_key = True)
+	program = models.ForeignKey(Program)
+	credits = models.IntegerField()
+	
+	def __unicode__(self):
+		return self.name
+
+class Lecturer(models.Model):
+	name = models.CharField(max_length = 30)
+	falcuty = models.CharField(max_length = 50)
+	subjects_in_charge = models.ManyToManyField(Subject, related_name = 'c+')
+	subjects_can_taught = models.ManyToManyField(Subject, related_name = 't+')
+	credits = models.IntegerField()
+	def __unicode__(self):
+		return self.name

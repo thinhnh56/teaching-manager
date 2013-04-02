@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+
+<html>
+  <head>
+	<meta charset = "utf-8">
+	<title> Login </title>
+	
+	<link type="text/css" href="/static/bootstrap/css/bootstrap.css" rel="stylesheet">
+  </head>
+  
+ 
+ <body>
+	<form class="well" action="" method="POST">{% csrf_token %}
+		<label>Username</label>
+		<input type="text" name="username" />
+		<label>Password</label>
+		<input type="text" name="password" /><br>
+		<button class="btn btn-primary" type="submit">Login</button>
+	</form>
+	
+	<script  src = "/static/bootstrap/js/bootstrap.js"></script>
+ </body>
+</html>
