@@ -12,6 +12,8 @@
 			<li><a href="#">{{shedule}}</a></li>
 		{% endfor %}
 	</ul>
-	<button class="btn">add shedule</button>
+	<form action="add_sheduler" method="POST">
+		<button class="btn" type="submit">add shedule</button>
+	</form>
 	</div>
 {% endblock %}
