@@ -109,7 +109,7 @@ ROOT_URLCONF = 'teaching_management.urls'
 WSGI_APPLICATION = 'teaching_management.wsgi.application'
 
 TEMPLATE_DIRS = (
-	'C:/Users/thinh/Desktop/project/teaching_management/template',
+	'C:/Users/thinh/Documents/GitHub/teaching-manager/teaching_management/template',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.

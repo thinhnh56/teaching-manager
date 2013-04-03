@@ -1,1 +1,27 @@
-{% extends "base.html"%}
+
+{% extends "base.html" %}
+
+
+{% block content %}
+<a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a>
+<div class="modal hide fade" id="add_subject" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">x</button>
+		<h3>New Subject</h3>
+	</div>
+	<div class="modal-body">
+		<form action="" method="POST">
+			<div>name</div>
+			<input type="text" name="subject_name" value=""></br>
+			<div>ID</div>
+			<input type="text" name="subject_ID" value=""></br>
+			<div>credit</div>
+			<input type="number" name="subject_credit" value="1"></br>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary">Save</button>
+	</div>
+</div>
+
+{% endblock %}
