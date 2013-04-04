@@ -9,11 +9,11 @@ def profile(request):
 	else:
 		return HttpResponse("Failed")
 		
-def sheduler(request):
+def scheduler(request):
 	if not request.user.is_authenticated:
 		return HttpResponse('wrong')
 		
-	return render_to_response("sheduler.html" )
+	return render_to_response("scheduler.html" )
 	
 def lecturer(request):
 	return render_to_response("lecturer.html")
