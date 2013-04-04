@@ -27,3 +27,17 @@ class Lecturer(models.Model):
 	credits = models.IntegerField()
 	def __unicode__(self):
 		return self.name
+
+class Scheduler(models.Model):
+	name = models.CharField(max_length = 30)
+
+	def __unicode__(self):
+		return self.name
+
+class Scheduler_link(models.Model):
+	scheduler = models.ForeignKey(Scheduler)
+	subject = models.ForeignKey(Subject)
+	lecturer = models.ManyToManyField(Lecturer)
+
+	def __unicode__(self):
+		return self.name
