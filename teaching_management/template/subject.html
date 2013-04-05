@@ -3,12 +3,46 @@
 
 
 {% block content %}
+<p align ="center" ><b> List of subjects</b></p>
+<table class="table table-bordered  table-striped ">
+	<tbody>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Credit</th>
+			<th>Program</th>
+		</tr>
+		<tr>
+			<td>row 1,col 1</td>
+			<td>row 1,col 2</td>
+			<td>row 1,col 3</td>
+			<td>row 1,col 4</td>
+		</tr>
+		<tr>
+			<td>row 2,col 1</td>
+			<td>row 2,col 2</td>
+			<td>row 2,col 3</td>
+			<td>row 2,col 4</td>
+		</tr>
+		<tr>
+			<td>row 3,col 1</td>
+			<td>row 3,col 2</td>
+			<td>row 3,col 3</td>
+			<td>row 3,col 4</td>
+		</tr>
+	</tbody>
+</table>
 <a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a>
 <div class="modal hide fade" id="add_subject" tabindex="-1">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">x</button>
 		<h3>New Subject</h3>
 	</div>
+    	
+                        
+	
+                    
+	
 	<div class="modal-body">
 		<form action="" method="POST">
 			<div>name</div>
