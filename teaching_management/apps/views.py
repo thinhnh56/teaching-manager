@@ -2,7 +2,7 @@
 from django.contrib import auth
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
-from apps.models import Subject
+from apps.models import Subject, Lecturer, Scheduler, Program
 
 def profile(request):
 	if request.user.is_authenticated :
@@ -19,7 +19,8 @@ def scheduler(request):
 def lecturer(request):
 	if not request.user.is_authenticated:
 		return HttpResponse('wrong')
-	return render_to_response("lecturer.html")
+	lecturer_list = Lecturer.objects.all()
+	return render_to_response("lecturer.html", {"lecturer_list" : lecturer_list})
 	
 	
 def subject(request):

@@ -1,1 +1,71 @@
-{% extends "base.html"%}
+
+{% extends "base.html" %}
+
+
+{% block content %}
+<h1><p class="brand" align = "center"><b>Lecturer</b></p></h1>
+<h3><p align ="center" ><b>List of lecturers</b></p></h3>
+<table class="table table-bordered  table-striped ">
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Falcuty</th>
+				<th>Subject in charge</th>
+				<th>Subject can teach</th>
+				<th>Credit</th>
+			</tr>
+			{% for lecturer in lecturer_list %}
+			<tr>
+				<td>{{lecturer.name}}</td>
+				<td>{{lecturer.falcuty}}</td>
+				<td>
+				<ul>
+					{% for subjects_in_charge in lecturer.subjects_in_charge.all %}
+						<li>{{subjects_in_charge}}</li>
+					{% endfor %}	
+				</ul>
+				</td>
+				<td>
+				<ul>
+				{% for subjects_can_taught in lecturer.subjects_can_taught.all %}
+					<li>{{subjects_can_taught}}</li>
+				{% endfor %}	
+				</ul>
+				</td>
+				<td>{{lecturer.credits}}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</table>
+<p align = "right"><a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a></p>
+<div class="modal hide fade" id="add_subject" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">x</button>
+		<h3>New Subject</h3>
+	</div>  	
+                  
+	               
+	<div class="modal-body">
+		<form action="" method="POST">
+			<div>Name</div>
+			<input type="text" name="subject_name" value=""></br>
+			<div>ID</div>
+			<input type="text" name="subject_ID" value=""></br>
+			<div>Credit</div>
+			<input type="number" name="subject_credit" value="1"></br>
+			<div>Program</div>
+			<select>
+			{% for subject in subject_list %}
+                <option>{{subject.program}}</option>
+            {%endfor%}
+            </select>
+			<!--<input type="number" name="subject_credit" value="1"></br>-->
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary">Save</button>
+	</div>
+</div>
+
+{% endblock %}
