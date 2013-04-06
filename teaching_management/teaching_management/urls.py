@@ -19,7 +19,7 @@ urlpatterns = patterns('',
 	(r'lecturer$', lecturer),
 	(r'Program$', program),
 	(r'accounts/profile/$', profile),
-	(r'scheduler$', sheduler),
+	(r'scheduler$', scheduler),
 	(r'statistic$', statistic),
     url(r'^admin/', include(admin.site.urls)),
 )
