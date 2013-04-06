@@ -38,11 +38,11 @@
 		</tbody>
 	</table>
 </table>
-<p align = "right"><a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a></p>
-<div class="modal hide fade" id="add_subject" tabindex="-1">
+<p align = "right"><a class="btn" data-toggle="modal" href="#add_lecturer">Add Lecturer</a></p>
+<div class="modal hide fade" id="add_lecturer" tabindex="-1">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">x</button>
-		<h3>New Subject</h3>
+		<h3>New Lecturer</h3>
 	</div>  	
                   
 	
@@ -50,20 +50,27 @@
 	<div class="modal-body">
 			<div>Name</div>
 			<input type="text" name="subject_name" value=""></br>
-			<div>ID</div>
-			<input type="text" name="subject_ID" value=""></br>
+			<div>Falcuty</div>
+			<input type= "text" name="falcuty_name" value=""></br>
+			<div>Subjects in charge</div>
+			<select name = "subjects_in_charge" multiple = "multiple">
+				{% for subjects_in_charge in subjects_list %}
+					<option>{{subjects_in_charge}}</option>
+				{% endfor %}
+			</select>	
+			<div> Subjects can teach</div>
+			<select name = "subjects_can_teach" multiple = "multiple">
+				{% for subjects_can_teach in subjects_list %}
+					<option>{{subjects_can_teach}}</option>
+				{% endfor %}
+			</select>	
 			<div>Credit</div>
 			<input type="number" name="subject_credit" value="1"></br>
-			<div>Program</div>
-			<select>
-			{% for subject in subject_list %}
-                <option>{{subject.program}}</option>
-            {%endfor%}
-            </select>
-			<!--<input type="number" name="subject_credit" value="1"></br>-->
+			
+			
 	</div>
 	<div class="modal-footer">
-		<input type="submit" class="btn btn-primary" >Save</input>
+		<button class="btn btn-primary" type ="submit">Save</button>
 	</div>
 	</form>
 </div>

@@ -21,7 +21,8 @@ def lecturer(request):
 	if not request.user.is_authenticated:
 		return HttpResponse('wrong')
 	lecturer_list = Lecturer.objects.all()
-	return render_to_response("lecturer.html", {"lecturer_list" : lecturer_list})
+	subjects_list =  Subject.objects.all()
+	return render_to_response("lecturer.html", {"lecturer_list" : lecturer_list, "subjects_list" : subjects_list})
 	
 #add new subject
 def subject_add(name, ID, program, credit):
