@@ -7,36 +7,95 @@
     }
 </style>
 {% block content%}
-	<div class="container span3">
-	<div class="well sidebar-nav">
-		<ul class="nav nav-list">
-			<li class="nav-header">Sidebar</li>
-			<li class="active">
-				<a href="#">Test</a>
-			</li>
-			<li>
-				<a href="#">Link</a>
-			</li>
-			<li>
-				<a href="#">Link</a>
-			</li>
-			<li>
-				<a href="#">Link</a>
-			</li>
-			
-		</ul>
-	</div>
-	<!--/.well -->
-	<ul class="nav nav-tabs nav-stacked">
-		<li class="nav-header">
-			Shedules
-		</li>
-		{% for shedule in shedule_list%}
-			<li><a href="#">{{shedule}}</a></li>
-		{% endfor %}
-	</ul>
-	<form action="add_sheduler" method="POST">
-		<button class="btn" type="submit">add shedule</button>
-	</form>
-	</div>
+<div class="container span6">
+<div class="container-fluid"></div>
+<table class="table" border = '0'>
+	<tbody>
+	
+		<tr>
+			<th class="sidebar1">
+			<p = align = "center">List of Schedules</p>
+				<div class="container span3">
+				<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header"></li>
+					<li class="active">
+						<a href="#schedule">Test</a>
+					</li>
+					<li>
+						<a href="#">Link</a>
+					</li>
+					<li>
+						<a href="#">Link</a>
+					</li>
+					<li>
+						   <a href="#">Link</a>
+					</li>
+				</ul>
+			</div>
+			<form action="add_sheduler" method="POST">
+			<p align = "right">
+				<button class="btn" type="submit">add schedule</button>
+			</p>
+			</form>
+
+			</th>
+			<th class="sidebar2">
+				<div class="container span 6">
+				<p = align = "center">Schedules of ...</p>
+				<table class="table" border = "2">
+					<tbody>
+						<tr>
+							<th>header 1</th>
+							<th>header 2</th>
+							<th>header 3</th>
+							<th>header 4</th>
+							<th>header 5</th>
+							<th>header 6</th>
+						</tr>
+						<tr>
+							<td>row 1,col 1</td>
+							<td>row 1,col 2</td>
+							<td>row 1,col 3</td>
+							<td>row 1,col 4</td>
+							<td>row 1,col 5</td>
+							<td>row 1,col 6</td>
+						</tr>
+						<tr>
+							<td>row 2,col 1</td>
+							<td>row 2,col 2</td>
+							<td>row 2,col 3</td>
+							<td>row 2,col 4</td>
+							<td>row 2,col 5</td>
+							<td>row 2,col 6</td>
+						</tr>
+						<tr>
+							<td>row 3,col 1</td>
+							<td>row 3,col 2</td>
+							<td>row 3,col 3</td>
+							<td>row 3,col 4</td>
+							<td>row 3,col 5</td>
+							<td>row 3,col 6</td>
+						</tr>
+						<tr>
+							<td>row 4,col 1</td>
+							<td>row 4,col 2</td>
+							<td>row 4,col 3</td>
+							<td>row 4,col 4</td>
+							<td>row 4,col 5</td>
+							<td>row 4,col 6</td>
+						</tr>
+					</tbody>
+				</table>
+			</th>
+		</tr>
+	</tbody>
+</table> 
+<!--/.well -->
+<div class="container span">
+
+
+</div>
+
+
 {% endblock %}
