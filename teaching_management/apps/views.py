@@ -16,10 +16,22 @@ def scheduler(request):
 	return render_to_response("scheduler.html" )
 	
 def lecturer(request):
+	if not request.user.is_authenticated:
+		return HttpResponse('wrong')
 	return render_to_response("lecturer.html")
+	
+	
 def subject(request):
+	if not request.user.is_authenticated:
+		return HttpResponse('wrong')
 	return render_to_response("subject.html")
+	
 def program(request):
+	if not request.user.is_authenticated:
+		return HttpResponse('wrong')
 	return render_to_response("program.html")
+	
 def statistic(request):
+	if not request.user.is_authenticated:
+		return HttpResponse('wrong')
 	return render_to_response("statistic.html")
