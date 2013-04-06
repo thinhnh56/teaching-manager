@@ -46,26 +46,26 @@
 	</div>  	
                   
 	
-	<form action="" method="POST">
+	<form action="" method="POST">{% csrf_token %}
 	<div class="modal-body">
 			<div>Name</div>
-			<input type="text" name="subject_name" value=""></br>
+			<input type="text" name="lecturer_name" value=""></br>
 			<div>Falcuty</div>
-			<input type= "text" name="falcuty_name" value=""></br>
+			<input type= "text" name="lecturer_falcuty" value=""></br>
 			<div>Subjects in charge</div>
-			<select name = "subjects_in_charge" multiple = "multiple">
+			<select name = "subjects_in_charge" multiple = "multiple" >
 				{% for subjects_in_charge in subjects_list %}
 					<option>{{subjects_in_charge}}</option>
 				{% endfor %}
 			</select>	
 			<div> Subjects can teach</div>
-			<select name = "subjects_can_teach" multiple = "multiple">
+			<select name = "subjects_can_teach" multiple = "multiple" >
 				{% for subjects_can_teach in subjects_list %}
 					<option>{{subjects_can_teach}}</option>
 				{% endfor %}
 			</select>	
 			<div>Credit</div>
-			<input type="number" name="subject_credit" value="1"></br>
+			<input type="number" name="lecturer_credit" value="1"></br>
 			
 			
 	</div>

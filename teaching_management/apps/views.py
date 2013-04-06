@@ -16,13 +16,48 @@ def scheduler(request):
 		return HttpResponse('wrong')
 		
 	return render_to_response("scheduler.html" )
+
+#add new lecturer
+def lecturer_add(name, falcuty, subjects_in_charge, subjects_can_teach, credits):
+	new_lecturer = Lecturer()
+	new_lecturer.name = name
+	new_lecturer.falcuty = falcuty
+	new_lecturer.credits = credits
+	new_lecturer.save()
 	
+	for subject in subjects_in_charge:
+		new_lecturer.subjects_in_charge.add(subject)
+
+	for subject in subjects_can_teach:
+		new_lecturer.subjects_can_taught.add(subject)
+
+
+	new_lecturer.save()
+
 def lecturer(request):
 	if not request.user.is_authenticated:
 		return HttpResponse('wrong')
 	lecturer_list = Lecturer.objects.all()
 	subjects_list =  Subject.objects.all()
-	return render_to_response("lecturer.html", {"lecturer_list" : lecturer_list, "subjects_list" : subjects_list})
+	if request.POST:
+		name = request.POST['lecturer_name']
+		falcuty = request.POST['lecturer_falcuty']
+		credit = request.POST['lecturer_credit']
+		subjects_in_charge = request.POST.getlist('subjects_in_charge')
+		subjects_can_teach = request.POST.getlist('subjects_can_teach')
+		temp_list = []
+		for subject in subjects_in_charge:
+			temp_list.append(Subject.objects.get(name = subject))
+		subjects_in_charge = []
+		subjects_in_charge = temp_list
+		temp_list = []
+		for subject in subjects_can_teach:
+			temp_list.append(Subject.objects.get(name = subject))
+		subjects_can_teach = []
+		subjects_can_teach = temp_list
+		lecturer_add(name, falcuty, subjects_can_teach, subjects_in_charge, credit)
+
+	return render_to_response("lecturer.html", {"lecturer_list" : lecturer_list, "subjects_list" : subjects_list}, RequestContext(request))
 	
 #add new subject
 def subject_add(name, ID, program, credit):
