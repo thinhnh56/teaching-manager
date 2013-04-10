@@ -38,6 +38,3 @@ class Scheduler_link(models.Model):
 	scheduler = models.ForeignKey(Scheduler)
 	subject = models.ForeignKey(Subject)
 	lecturer = models.ManyToManyField(Lecturer)
-
-	def __unicode__(self):
-		return self.name

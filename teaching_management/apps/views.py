@@ -13,13 +13,14 @@ def profile(request):
 
 def scheduler_link(request, schedule_name):
 	schedule_list = Scheduler.objects.all()
-	#scheduler_link_list = Scheduler_link.objects.get(scheduler.name = scheduler_name)
+	scheduler_link_list = Scheduler_link.objects.filter(scheduler__in = [Scheduler.objects.get(name = schedule_name),] )
+
 	if request.POST:
 		schedule_name = request.POST['schedule_name']
 		scheduler_add(schedule_name)
 
 	return render_to_response("schedule_list.html", 
-								{'schedule_list':schedule_list, 'schedule_name':schedule_name},
+								{'schedule_list':schedule_list, 'schedule_name':schedule_name, 'scheduler_link_list':scheduler_link_list},
 								RequestContext(request))
 
 def scheduler_add(name):
