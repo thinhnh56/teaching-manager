@@ -21,5 +21,6 @@ urlpatterns = patterns('',
 	(r'accounts/profile/$', profile),
 	(r'scheduler$', scheduler),
 	(r'statistic$', statistic),
+	(r'^home$',login),
     url(r'^admin/', include(admin.site.urls)),
 )
