@@ -39,16 +39,28 @@
 							<th>ID</th>
 							<th>Subject</th>
 							<th>Credit</th>
-							<th>Lecturer_in_charge</th>
+							<!--<th>Lecturer_in_charge</th>-->
 							<th>Lecturer</th>
 						</tr>
 					  {% for scheduler_link in scheduler_link_list %}
 						<tr>
 							<td>{{scheduler_link.subject.ID}}</td>
 							<td>{{scheduler_link.subject.name}}</td>
-							<td>{{scheduler_link.subject.Credit}}</td>
-							<td></td>
-							<td>{{scheduler_link.lecturer.all}}</td>
+							<td>{{scheduler_link.subject.credits}}</td>
+							<!--<td>
+								{% for lecturer in lecturer_list %}
+									{% for subject in lecturer.subject_in_charge.all %}
+										{% if scheduler_link.subject = subject %}
+											{{lecturer.name}}
+										{% endif %}
+									{% endfor %}
+								{% endfor %}
+							</td>-->
+							<td>
+								{% for lecturer in scheduler_link.lecturer.all %}
+									<li>{{lecturer.name}}</li>
+								{% endfor %}
+							</td>
 						</tr>
 					  {% endfor %}
 					</tbody>

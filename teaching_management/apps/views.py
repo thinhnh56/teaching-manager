@@ -14,7 +14,6 @@ def profile(request):
 def scheduler_link(request, schedule_name):
 	schedule_list = Scheduler.objects.all()
 	scheduler_link_list = Scheduler_link.objects.filter(scheduler__in = [Scheduler.objects.get(name = schedule_name),] )
-
 	if request.POST:
 		schedule_name = request.POST['schedule_name']
 		scheduler_add(schedule_name)
