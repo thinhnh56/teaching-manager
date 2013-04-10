@@ -23,7 +23,7 @@ class Lecturer(models.Model):
 	name = models.CharField(max_length = 30)
 	falcuty = models.CharField(max_length = 50)
 	subjects_in_charge = models.ManyToManyField(Subject, related_name = 'c+')
-	subjects_can_taught = models.ManyToManyField(Subject, related_name = 't+')
+	subjects_can_teach = models.ManyToManyField(Subject, related_name = 't+')
 	credits = models.IntegerField()
 	def __unicode__(self):
 		return self.name

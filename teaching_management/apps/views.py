@@ -3,19 +3,41 @@ from django.contrib import auth
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext, Template
-from apps.models import Subject, Lecturer, Scheduler, Program
+from apps.models import Subject, Lecturer, Scheduler, Scheduler_link, Program
 
 def profile(request):
 	if request.user.is_authenticated :
 		return render_to_response("base.html")
 	else:
 		return HttpResponse("Failed")
-		
+
+def scheduler_link(request, schedule_name):
+	schedule_list = Scheduler.objects.all()
+	#scheduler_link_list = Scheduler_link.objects.get(scheduler.name = scheduler_name)
+	if request.POST:
+		schedule_name = request.POST['schedule_name']
+		scheduler_add(schedule_name)
+
+	return render_to_response("schedule_list.html", 
+								{'schedule_list':schedule_list, 'schedule_name':schedule_name},
+								RequestContext(request))
+
+def scheduler_add(name):
+	new_scheduler = Scheduler()
+	new_scheduler.name = name
+	new_scheduler.save()
+
 def scheduler(request):
 	if not request.user.is_authenticated:
 		return HttpResponse('wrong')
-		
-	return render_to_response("scheduler.html" )
+	
+	schedule_list = Scheduler.objects.all()
+
+	if request.POST:
+		schedule_name = request.POST['schedule_name']
+		scheduler_add(schedule_name)
+
+	return render_to_response("scheduler.html", {'schedule_list':schedule_list}, RequestContext(request))
 
 #add new lecturer
 def lecturer_add(name, falcuty, subjects_in_charge, subjects_can_teach, credits):
@@ -29,16 +51,19 @@ def lecturer_add(name, falcuty, subjects_in_charge, subjects_can_teach, credits)
 		new_lecturer.subjects_in_charge.add(subject)
 
 	for subject in subjects_can_teach:
-		new_lecturer.subjects_can_taught.add(subject)
+		new_lecturer.subjects_can_teach.add(subject)
 
 
 	new_lecturer.save()
 
 def lecturer(request):
+
 	if not request.user.is_authenticated:
 		return HttpResponse('wrong')
+	
 	lecturer_list = Lecturer.objects.all()
 	subjects_list =  Subject.objects.all()
+	
 	if request.POST:
 		name = request.POST['lecturer_name']
 		falcuty = request.POST['lecturer_falcuty']
@@ -55,7 +80,7 @@ def lecturer(request):
 			temp_list.append(Subject.objects.get(name = subject))
 		subjects_can_teach = []
 		subjects_can_teach = temp_list
-		lecturer_add(name, falcuty, subjects_can_teach, subjects_in_charge, credit)
+		lecturer_add(name, falcuty, subjects_in_charge, subjects_can_teach, credit)
 
 	return render_to_response("lecturer.html", {"lecturer_list" : lecturer_list, "subjects_list" : subjects_list}, RequestContext(request))
 	

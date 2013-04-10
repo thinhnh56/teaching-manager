@@ -17,10 +17,10 @@
 				<div class="container span3">
 				<div class="well sidebar-nav">
 				<ul class="nav nav-list">
-					<li class="nav-header">scheduler list</li>
+					<li class="nav-header">schedule list</li>
 					{% for schedule in schedule_list %}
 						<li>
-							<a href = "/scheduler/{{schedule.name}}" >{{schedule.name}}</a>
+							<a href = "{{schedule.name}}" >{{schedule.name}}</a>
 						</li>
 					{% endfor %}
 				</ul>
@@ -28,6 +28,32 @@
 			<p align = "right">
 				<a class="btn" data-toggle="modal" href="#add_scheduler">Add Schedule</a>
 			</p>
+
+			</th>
+			<th class="sidebar2">
+				<div class="container span 6">
+				<p = align = "center">Schedules of {{schedule_name}}</p>
+				<table class="table" border = "2">
+					<tbody>
+						<tr>
+							<th>ID</th>
+							<th>Subject</th>
+							<th>Credit</th>
+							<th>Lecturer_in_charge</th>
+							<th>Lecturer</th>
+						</tr>
+					  {% for scheduler_link in scheduler_link_list %}
+						<tr>
+							<td>{{scheduler_link.subject.ID}}</td>
+							<td>{{scheduler_link.subject.name}}</td>
+							<td>{{scheduler_link.subject.Credit}}</td>
+							<td></td>
+							<td>{{scheduler_link.lecturer.all}}</td>
+						</tr>
+					  {% endfor %}
+					</tbody>
+				</table>
+			</th>
 		</tr>
 	</tbody>
 </table> 
@@ -37,7 +63,7 @@
 
 </div>
 
-<div class="modal hide fade" id="add_scheduler" tabindex="-1">
+<div class="modal hide fade" id="add_schedule" tabindex="-1">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">x</button>
 		<h3>New Schedule</h3>
@@ -53,4 +79,5 @@
 	</div>
 	</form>
 </div>
+
 {% endblock %}
