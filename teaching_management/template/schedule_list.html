@@ -26,7 +26,7 @@
 				</ul>
 			</div>
 			<p align = "right">
-				<a class="btn" data-toggle="modal" href="#add_scheduler">Add Schedule</a>
+				<a class="btn" data-toggle="modal" href="#add_schedule">Add Schedule</a>
 			</p>
 
 			</th>
@@ -65,6 +65,9 @@
 					  {% endfor %}
 					</tbody>
 				</table>
+				<p align = "right">
+				<a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a>
+			</p>
 			</th>
 		</tr>
 	</tbody>
@@ -83,6 +86,7 @@
                   
 	<form action="" method="POST">{% csrf_token %}           
 	<div class="modal-body">
+			<input type = "hidden" name = "form_type" value = "new_schedule" >
 			<div>Name</div>
 			<input type="text" name="schedule_name" value=""></br>
 	</div>
@@ -92,4 +96,31 @@
 	</form>
 </div>
 
+<div class="modal hide fade" id="add_subject" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">x</button>
+		<h3>New Link</h3>
+	</div>  	
+                  
+	<form action="" method="POST">{% csrf_token %}           
+	<div class="modal-body">
+			<input type ="hidden" name ="form_type" value = "add_link">
+			<div>Subject</div>
+			<select name= "subject_ID">
+				{% for subject in subject_list %}
+					<option>{{subject.ID}}</option>
+				{% endfor %}
+            </select>
+            <div>Lecturer</div>
+            <select name= "lecturers" multiple ="multiple">
+				{% for lecturer in lecturer_list %}
+					<option>{{lecturer}}</option>
+				{% endfor %}
+            </select>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type ="submit">Save</button>
+	</div>
+	</form>
+</div>
 {% endblock %}

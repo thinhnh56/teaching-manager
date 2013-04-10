@@ -11,15 +11,39 @@ def profile(request):
 	else:
 		return HttpResponse("Failed")
 
+def add_scheduler_link(scheduler, subject, lecturer_list):
+	new_scheduler_link = Scheduler_link()
+
+	new_scheduler_link.scheduler.add(scheduler)
+	new_scheduler_link.subject.add(subject)
+	for lecturer in lecturer_list:
+		new_scheduler_link.lecturer.add(lecturer)
+	new_scheduler_link.save()
+
+
 def scheduler_link(request, schedule_name):
 	schedule_list = Scheduler.objects.all()
 	scheduler_link_list = Scheduler_link.objects.filter(scheduler__in = [Scheduler.objects.get(name = schedule_name),] )
+	lecturer_list = Lecturer.objects.all()
+	subject_list = Subject.objects.all()
 	if request.POST:
-		schedule_name = request.POST['schedule_name']
-		scheduler_add(schedule_name)
+		if request.POST['form_type'] == 'new_schedule' :
+			schedule_name = request.POST['schedule_name']
+			scheduler_add(schedule_name)
+		elif request.POST['form_type'] == 'add_link':
+			scheduler = Scheduler.objects.get(name = schedule_name)
+			subject_ID = request.POST['subject_ID']
+			subject = Subject.objects.get(ID = subject_ID)
+			lecturers = request.POST.getlist('lecturers')
+			temp_list = []
+			for lec in lecturers :
+				temp_list.append(Lecturer.objects.get(name = lec))
+			lecturers = temp_list
+			add_scheduler_link(scheduler, subject, lecturers)
 
 	return render_to_response("schedule_list.html", 
-								{'schedule_list':schedule_list, 'schedule_name':schedule_name, 'scheduler_link_list':scheduler_link_list},
+								{'lecturer_list':lecturer_list, 'subject_list':subject_list, 
+								'schedule_list':schedule_list, 'schedule_name':schedule_name, 'scheduler_link_list':scheduler_link_list},
 								RequestContext(request))
 
 def scheduler_add(name):
