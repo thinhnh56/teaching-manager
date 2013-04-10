@@ -13,9 +13,9 @@ def profile(request):
 
 def add_scheduler_link(scheduler, subject, lecturer_list):
 	new_scheduler_link = Scheduler_link()
-
-	new_scheduler_link.scheduler.add(scheduler)
-	new_scheduler_link.subject.add(subject)
+	new_scheduler_link.scheduler = scheduler
+	new_scheduler_link.subject = subject
+	new_scheduler_link.save()
 	for lecturer in lecturer_list:
 		new_scheduler_link.lecturer.add(lecturer)
 	new_scheduler_link.save()
