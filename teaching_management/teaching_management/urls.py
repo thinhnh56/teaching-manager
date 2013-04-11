@@ -20,7 +20,7 @@ urlpatterns = patterns('',
 	(r'Program$', program),		#link to program site	
 	(r'accounts/profile/$', profile),	
 	(r'scheduler$', scheduler),	#link to scheduler site
-	(r'scheduler/([a-z]+[^/]+)$', scheduler_link),	#link to the scheduler of each content of schedule
+	(r'scheduler/([A-Za-z]+[^/]+)$', scheduler_link),	#link to the scheduler of each content of schedule
 	(r'statistic$', statistic),     	#link to statistic site
 	(r'^home$',login),					#link to homepage (~ login site)
     url(r'^admin/', include(admin.site.urls)),  #link to admin site
