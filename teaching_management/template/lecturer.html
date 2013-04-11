@@ -5,6 +5,8 @@
 {% block content %}
 <h1><p class="brand" align = "center"><b>Lecturer</b></p></h1>
 <h3><p align ="center" ><b>List of lecturers</b></p></h3>
+<!-- Table of lecturer-->
+
 <table class="table table-bordered  table-striped ">
 		<tbody>
 			<tr>
@@ -38,14 +40,18 @@
 		</tbody>
 	</table>
 </table>
+<!-- end of table of lecturer-->
+
+<!-- add lecturer button-->
 <p align = "right"><a class="btn" data-toggle="modal" href="#add_lecturer">Add Lecturer</a></p>
 <div class="modal hide fade" id="add_lecturer" tabindex="-1">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">x</button>
 		<h3>New Lecturer</h3>
 	</div>  	
+<!-- end of add lecturer button-->
                   
-	
+	<!-- inside lecturer button-->
 	<form action="" method="POST">{% csrf_token %}
 	<div class="modal-body">
 			<div>Name</div>
@@ -73,6 +79,7 @@
 		<button class="btn btn-primary" type ="submit">Save</button>
 	</div>
 	</form>
+	<!-- end of inside lecturer button-->
 </div>
 
 {% endblock %}

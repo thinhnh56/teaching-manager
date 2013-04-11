@@ -5,6 +5,7 @@
 {% block content %}
 <h1><p class="brand" align = "center"><b>Subject</b></p></h1>
 <h3><p align ="center" ><b>List of subjects</b></p></h3>
+<!-- Table of subject-->
 <table class="table table-bordered  table-striped ">
 	<tbody>
 		<tr align = "center">
@@ -23,14 +24,15 @@
 		{%endfor%}
 	</tbody>
 </table>
-
+<!-- End table -->
+<!-- Add subject button -->
 <p align = "right"><a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a></p>
 <div class="modal hide fade" id="add_subject" tabindex="-1">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">x</button>
 		<h3>New Subject</h3>
 	</div>  	
-                  
+     <!-- Inside add subject button -->             
 	<form action="" method="POST">{% csrf_token %}           
 	<div class="modal-body">
 			<div>Name</div>
@@ -46,10 +48,12 @@
 				{% endfor %}
             </select>
 	</div>
+	<!-- end of inside subject button-->
 	<div class="modal-footer">
 		<button class="btn btn-primary" type ="submit">Save</button>
 	</div>
 	</form>
 </div>
+<!-- End add subject button-->
 
 {% endblock %}

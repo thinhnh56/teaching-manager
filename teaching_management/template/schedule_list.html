@@ -11,11 +11,12 @@
 <div class="container-fluid"></div>
 <table class="table" border = '0'>
 	<tbody>
-	
+		<!-- left side bar- (side bar 1)-->
 		<tr>
 			<th class="sidebar1">
 				<div class="container span3">
 				<div class="well sidebar-nav">
+				<!-- list of existing schedule-->
 				<ul class="nav nav-list">
 					<li class="nav-header">schedule list</li>
 					{% for schedule in schedule_list %}
@@ -23,16 +24,21 @@
 							<a href = "{{schedule.name}}" >{{schedule.name}}</a>
 						</li>
 					{% endfor %}
+				<!-- end of list of exsiting schedule-->
 				</ul>
 			</div>
+			<!-- add schdule button-->
 			<p align = "right">
 				<a class="btn" data-toggle="modal" href="#add_schedule">Add Schedule</a>
 			</p>
 
 			</th>
+			<!-- end of add schdule button-->
+		<!-- right side bar (side bar 2)-->	
 			<th class="sidebar2">
 				<div class="container span 6">
 				<p = align = "center">Schedules of {{schedule_name}}</p>
+				<!--table of schedule -->
 				<table class="table" border = "2">
 					<tbody>
 						<tr>
@@ -65,10 +71,13 @@
 					  {% endfor %}
 					</tbody>
 				</table>
+				<!--end of table of lecture-->
 				<p align = "right">
 				<a class="btn" data-toggle="modal" href="#add_subject">Add Subject</a>
 			</p>
 			</th>
+			
+		<!-- end right sidebar (sidebar 2) -->
 		</tr>
 	</tbody>
 </table> 
@@ -77,13 +86,13 @@
 
 
 </div>
-
+<!-- Inside add schedule button-->
 <div class="modal hide fade" id="add_schedule" tabindex="-1">
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">x</button>
 		<h3>New Schedule</h3>
-	</div>  	
-                  
+	</div>  
+         
 	<form action="" method="POST">{% csrf_token %}           
 	<div class="modal-body">
 			<input type = "hidden" name = "form_type" value = "new_schedule" >
@@ -123,4 +132,5 @@
 	</div>
 	</form>
 </div>
+<!-- end of inside schedule add button-->
 {% endblock %}
