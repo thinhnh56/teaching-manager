@@ -14,14 +14,14 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-	(r'^$', login),
-	(r'subject$', subject),
-	(r'lecturer$', lecturer),
-	(r'Program$', program),
-	(r'accounts/profile/$', profile),
-	(r'scheduler$', scheduler),
-	(r'scheduler/([a-z]+[^/]+)$', scheduler_link),
-	(r'statistic$', statistic),
-	(r'^home$',login),
-    url(r'^admin/', include(admin.site.urls)),
+	(r'^$', login),   	#link to login site
+	(r'subject$', subject),   #link to subject site
+	(r'lecturer$', lecturer),   #link to lecturer site
+	(r'Program$', program),		#link to program site	
+	(r'accounts/profile/$', profile),	
+	(r'scheduler$', scheduler),	#link to scheduler site
+	(r'scheduler/([a-z]+[^/]+)$', scheduler_link),	#link to the scheduler of each content of schedule
+	(r'statistic$', statistic),     	#link to statistic site
+	(r'^home$',login),					#link to homepage (~ login site)
+    url(r'^admin/', include(admin.site.urls)),  #link to admin site
 )
