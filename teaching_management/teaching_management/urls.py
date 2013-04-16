@@ -17,7 +17,7 @@ urlpatterns = patterns('',
 	(r'^$', login),   	#link to login site
 	(r'subject$', subject),   #link to subject site
 	(r'lecturer$', lecturer),   #link to lecturer site
-	(r'Program$', program),		#link to program site	
+	(r'program$', program),		#link to program site	
 	(r'accounts/profile/$', profile),	
 	(r'scheduler$', scheduler),	#link to scheduler site
 	(r'scheduler/([A-Za-z]+[^/]+)$', scheduler_link),	#link to the scheduler of each content of schedule
