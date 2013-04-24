@@ -56,10 +56,16 @@ class test(TestCase):
 		
 		# self.assertEqual(response.status_code, 200)
 		
-		client.post('/scheduler/\scheduler',
+		client.post('/accounts/profile/\scheduler',
 				{'schedule_name' : 'first term'})
+		
 		# self.assertEqual(response.status_code, 200)
 		
-		htmlres = client.get('/statistic/nguyen%20hung%20thinh')
-		self.assertContains(htmlres, '7')
+		client.post('/scheduler/first term',
+				{'form_type' : 'add_link',
+				'subject_ID' : dhmt.ID,
+				'lecturers' : 'nguyen hung thinh'})
+		
+		htmlres = client.get('/statistic/nguyen hung thinh')
+		self.assertContains(htmlres, '6')
 		
