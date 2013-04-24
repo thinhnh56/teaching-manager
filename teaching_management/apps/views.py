@@ -147,3 +147,9 @@ def statistic(request):
 	if not request.user.is_authenticated:			#if wrong url
 		return HttpResponse('wrong')
 	return render_to_response("statistic.html")
+
+#Home page
+def home (request):
+	if not request.user.is_authenticated:
+		return HttpResponse('wrong')
+	return render_to_response ("home.html")
