@@ -1,0 +1,60 @@
+
+{% extends "base.html" %}
+
+{% block content%}
+<div class="container span6">
+<div class="container-fluid"></div>
+<table class="table" border = '0'>
+	<tbody>
+	
+		<tr>
+			<th class="sidebar1">
+				<div class="container span3">
+				<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">Lecturers</li>
+					{% for lecturer in lecturer_list %}
+						<li>
+							<a href = "statistic/{{lecturer.name}}" >{{lecturer.name}}</a>
+						</li>
+					{% endfor %}
+				</ul>
+			</div>
+			<!-- right side bar (side bar 2)-->	
+			<th class="sidebar2">
+				<div class="container span 6">
+				<p = align = "center">{{lecturer_info.name}}</p>
+				<!--table of schedule -->
+				<table class="table" border = "2">
+					<tbody>
+						<tr>
+							<th>Lecturer</th>
+							<th>Subject</th>
+							<th>CreditHasTeach</th>
+							<th>Credit</th>
+						</tr>
+						<tr>
+							<td>{{lecturer_info.lecturer.name}}</td>
+							<td>
+								{% for subject in lecturer_info.subject.all %}
+									<li>{{subject.name}}</li>
+								{% endfor %}
+							</td>
+							<td>{{credit_count}}</td>
+							
+							<td>{{lecturer_info.lecturer.credits}}</td>
+						</tr>
+					</tbody>
+				</table>
+				<!--end of table of lecture-->
+			</th>
+		</tr>
+	</tbody>
+
+</table> 
+<!--/.well -->
+<div class="container span">
+
+
+</div>
+{% endblock %}

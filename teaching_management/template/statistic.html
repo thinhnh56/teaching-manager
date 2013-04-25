@@ -15,14 +15,11 @@
 					<li class="nav-header">Lecturers</li>
 					{% for lecturer in lecturer_list %}
 						<li>
-							<a href = "/lecturer/{{lecturer.name}}" >{{lecturer.name}}</a>
+							<a href = "/statistic/{{lecturer.name}}" >{{lecturer.name}}</a>
 						</li>
 					{% endfor %}
 				</ul>
 			</div>
-			<p align = "right">
-				<a class="btn" data-toggle="modal" href="#all">All</a>
-			</p>
 		</tr>
 	</tbody>
 </table> 

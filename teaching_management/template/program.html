@@ -1,1 +1,49 @@
 {% extends "base.html"%}
+
+{% block content %}
+<h1><p class="brand" align = "center"><b>Program</b></p></h1>
+<h3><p align ="center" ><b>List of programs</b></p></h3>
+<!-- Table of lecturer-->
+
+<table class="table table-bordered  table-striped ">
+		<tbody>
+			<tr>
+				<th>Name</th>
+				<th>Credit</th>
+			</tr>
+			{% for program in program_list %}
+			<tr>
+				<td>{{program.name}}</td>
+				<td>{{program.credits}}</td>
+			</td>
+			{% endfor %}
+		</tbody>
+	</table>
+</table>
+<!-- end of table of lecturer-->
+
+<!-- add program button-->
+<p align = "right"><a class="btn" data-toggle="modal" href="#add_program">Add Program</a></p>
+<div class="modal hide fade" id="add_program" tabindex="-1">
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">x</button>
+		<h3>New Program</h3>
+	</div>  	
+<!-- end of add program button-->
+                  
+	<!-- inside add program button-->
+	<form action="" method="POST">{% csrf_token %}
+	<div class="modal-body">
+			<div>Name</div>
+			<input type="text" name="program_name" value=""></br>	
+			<div>Credit</div>
+			<input type="number" name="program_credit" value="1"></br>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-primary" type ="submit">Save</button>
+	</div>
+	</form>
+	<!-- end of inside program button-->
+</div>
+
+{% endblock %}

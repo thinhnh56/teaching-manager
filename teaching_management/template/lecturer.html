@@ -11,7 +11,7 @@
 		<tbody>
 			<tr>
 				<th>Name</th>
-				<th>Falcuty</th>
+				<th>Faculty</th>
 				<th>Subject in charge</th>
 				<th>Subject can teach</th>
 				<th>Credit</th>
@@ -19,7 +19,7 @@
 			{% for lecturer in lecturer_list %}
 			<tr>
 				<td>{{lecturer.name}}</td>
-				<td>{{lecturer.falcuty}}</td>
+				<td>{{lecturer.faculty}}</td>
 				<td>
 				<ul>
 					{% for subjects_in_charge in lecturer.subjects_in_charge.all %}
@@ -56,8 +56,8 @@
 	<div class="modal-body">
 			<div>Name</div>
 			<input type="text" name="lecturer_name" value=""></br>
-			<div>Falcuty</div>
-			<input type= "text" name="lecturer_falcuty" value=""></br>
+			<div>Faculty</div>
+			<input type= "text" name="lecturer_faculty" value=""></br>
 			<div>Subjects in charge</div>
 			<select name = "subjects_in_charge" multiple = "multiple" >
 				{% for subjects_in_charge in subjects_list %}
