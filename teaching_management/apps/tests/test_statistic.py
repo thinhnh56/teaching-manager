@@ -7,13 +7,10 @@ class test(TestCase):
 		client = Client ()
 		Credits_for_test = 3
 		client.login(username='admin', password='mraisvip93')
-		# response = self.client.get('')
-		# self.assertEqual(response.status_code, 200)
 		self.program = Program()
 		self.program.name = 'IS'
 		self.program.credits = 152
 		self.program.save()
-		# self.assertEqual(self.program.name, 'ISP')
 		client.post('/accounts/profile/subject',
  						{'subject_name': 'toan roi rac',
  						'subject_ID' : '11111',
@@ -53,8 +50,6 @@ class test(TestCase):
 					'lecturer_credit' : Credits_for_test,
 					'subjects_in_charge' : [trr, ltnc],
 					'subjects_can_teach' : [trr, ltnc, thcs, dhmt]})
-		
-		# self.assertEqual(response.status_code, 200)
 		
 		client.post('/accounts/profile/\scheduler',
 				{'schedule_name' : 'first term'})
