@@ -27,7 +27,7 @@ class Subject(models.Model):
     """
     name = models.CharField(max_length = 30)
     ID = models.CharField(max_length = 10, primary_key = True)
-    program = models.ForeignKey(Program)
+    program = models.ForeignKey(Program, related_name = 'p+')
     credits = models.IntegerField()
     
     def __unicode__(self):
@@ -70,9 +70,9 @@ class Scheduler_link(models.Model):
     lecturer
     model to connet
     """
-    scheduler = models.ForeignKey(Scheduler)
-    subject = models.ForeignKey(Subject)
-    lecturer = models.ManyToManyField(Lecturer)
+    scheduler = models.ForeignKey(Scheduler, related_name = 'sc+')
+    subject = models.ForeignKey(Subject, related_name = 's+')
+    lecturer = models.ManyToManyField(Lecturer, related_name = 'l+')
 
 
 class Lecturer_teaching_info(models.Model):
@@ -80,14 +80,16 @@ class Lecturer_teaching_info(models.Model):
     this model store infomation about
         subjects that Lecturer has taught
     """
-    lecturer = models.ForeignKey(Lecturer)
+    lecturer = models.ForeignKey(Lecturer, related_name = 'l+')
     subject = models.ManyToManyField(Subject)
     credit = models.IntegerField()
-    
-    def update(self, subject):
-        self.subject.add(subject)
-        self.credit = self.credit + subject.credits
-        self.save()
-        
+
     def __unicode__(self):
         return self.lecturer.name
+
+
+    def update(self, given_subject):
+        self.subject.add(given_subject)
+        self.credit = self.credit + given_subject.credits
+        self.save()
+        
