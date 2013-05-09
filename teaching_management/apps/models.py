@@ -10,7 +10,9 @@ class Program(models.Model):
        name : name of a program
        credit: amount of credit that assigned to a program   
     """
-    name = models.CharField(max_length = 30)
+    MAX_LENGTH = 30
+    
+    name = models.CharField(max_length = MAX_LENGTH)
     credits = models.IntegerField()
      
     def __unicode__(self):
@@ -25,9 +27,13 @@ class Subject(models.Model):
     Program which subject belong to
     Number of credits
     """
-    name = models.CharField(max_length = 30)
-    ID = models.CharField(max_length = 10, primary_key = True)
-    program = models.ForeignKey(Program, related_name = 'p+')
+    NAME_MAX_LENGTH = 30
+    ID_MAX_LENGTH = 10
+    LINK_BACK_NAME = 'subject'
+    
+    name = models.CharField(max_length = NAME_MAX_LENGTH)
+    ID = models.CharField(max_length = ID_MAX_LENGTH, primary_key = True)
+    program = models.ForeignKey(Program, related_name = LINK_BACK_NAME)
     credits = models.IntegerField()
     
     def __unicode__(self):
@@ -43,10 +49,18 @@ class Lecturer(models.Model):
     Another Subjects which a lecturer can teach
     Number of credits that lecturer are teaching
     """
-    name = models.CharField(max_length = 30)
-    faculty = models.CharField(max_length = 50)
-    subjects_in_charge = models.ManyToManyField(Subject, related_name = 'c+')
-    subjects_can_teach = models.ManyToManyField(Subject, related_name = 't+')
+    NAME_MAX_LENGTH = 30
+    FACULTY_MAX_LENGTH = 50
+    #CHARGE_LINK_BACK is a name, which allow subject_in_charge to link back to lecturer
+    #similarly with subjects_can_teach
+    CHARGE_LINK_BACK = 'lecturer_in_charge'
+    TEACH_LINK_BACK = 'lecturer_can_teach'
+    name = models.CharField(max_length = NAME_MAX_LENGTH)
+    faculty = models.CharField(max_length = FACULTY_MAX_LENGTH)
+    subjects_in_charge = models.ManyToManyField(Subject, 
+                                                related_name = CHARGE_LINK_BACK)
+    subjects_can_teach = models.ManyToManyField(Subject, 
+                                                related_name = TEACH_LINK_BACK)
     credits = models.IntegerField()
     def __unicode__(self):
         return self.name
@@ -57,7 +71,8 @@ class Scheduler(models.Model):
     Scheduler field includes:
     Name of Scheduler
     """
-    name = models.CharField(max_length = 30)
+    MAX_LENGTH = 30
+    name = models.CharField(max_length = MAX_LENGTH)
     
     def __unicode__(self):
         return self.name
@@ -70,9 +85,12 @@ class Scheduler_link(models.Model):
     lecturer
     model to connet
     """
-    scheduler = models.ForeignKey(Scheduler, related_name = 'sc+')
-    subject = models.ForeignKey(Subject, related_name = 's+')
-    lecturer = models.ManyToManyField(Lecturer, related_name = 'l+')
+    # this following variable represent objects Scheduler_link linked with 
+    # specific objects type
+    SCHEDULER_LINK_BACK = SUBJECT_LINK_BACK = LECTURER_LINK_BACK = 'scheduler_link'
+    scheduler = models.ForeignKey(Scheduler, related_name = SCHEDULER_LINK_BACK)
+    subject = models.ForeignKey(Subject, related_name = SUBJECT_LINK_BACK)
+    lecturer = models.ManyToManyField(Lecturer, related_name = LECTURER_LINK_BACK)
 
 
 class Lecturer_teaching_info(models.Model):
@@ -80,7 +98,8 @@ class Lecturer_teaching_info(models.Model):
     this model store infomation about
         subjects that Lecturer has taught
     """
-    lecturer = models.ForeignKey(Lecturer, related_name = 'l+')
+    LECTURER_LINK_BACK = 'teaching_info'
+    lecturer = models.ForeignKey(Lecturer, related_name = LECTURER_LINK_BACK)
     subject = models.ManyToManyField(Subject)
     credit = models.IntegerField()
 

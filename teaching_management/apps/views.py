@@ -5,7 +5,7 @@ and display response
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from apps.models import Subject, Lecturer, Scheduler, Scheduler_link, Program, Lecturer_teaching_info
+from apps.models import *
 
 def profile(request):
     if request.user.is_authenticated :
@@ -21,16 +21,16 @@ def update_lecturer_teaching_info(lecturer, subject):
     """
     try :
         #lecturer's name
-        currentLecturer = Lecturer_teaching_info.objects.get(lecturer__in = [lecturer,])
-        currentLecturer.update(subject)
+        current_lecturer = Lecturer_teaching_info.objects.get(lecturer__in = [lecturer,])
+        current_lecturer.update(subject)
     except Lecturer_teaching_info.DoesNotExist :
-        newLecturer = Lecturer_teaching_info()
-        #initiate newLecturer
-        newLecturer.credit = 0
-        newLecturer.lecturer = lecturer
-        newLecturer.save()
-        newLecturer.update(subject)
-        newLecturer.save()
+        new_lecturer = Lecturer_teaching_info()
+        #initiate new_lecturer
+        new_lecturer.credit = 0
+        new_lecturer.lecturer = lecturer
+        new_lecturer.save()
+        new_lecturer.update(subject)
+        new_lecturer.save()
         
         
 #add scheduler_link function
@@ -102,7 +102,7 @@ def scheduler_link(request, given_schedule_name):
     """
     scheduler_link_list = Scheduler_link.objects.filter(
                             scheduler__in = 
-                               [Scheduler.objects.get(name = given_schedule_name),])
+                            [Scheduler.objects.get(name = given_schedule_name),])
     return render_to_response("schedule_list.html", 
                                 {'lecturer_list':lecturer_list, 
                                 'subject_list':subject_list, 
@@ -144,7 +144,10 @@ def home (request):
     return render_to_response ("home.html")
 
 #add new lecturer function
-def lecturer_add(given_name, given_faculty, given_subjects_in_charge, given_subjects_can_teach, given_credit):
+def lecturer_add(given_name, given_faculty, 
+                 given_subjects_in_charge, 
+                 given_subjects_can_teach, 
+                 given_credit):
     """
     add a new lecturer to database:
     given_name : given_name of a lecturer (string)
@@ -309,12 +312,12 @@ def statistic_individual_lecturer(request, lecturer_name):
         lecturer_info = current_lecturer_info
     
     except Lecturer_teaching_info.DoesNotExist :
-        newLecturerInfo = Lecturer_teaching_info()
-        newLecturerInfo.credit = 0
-        newLecturerInfo.lecturer = current_lecturer
-        newLecturerInfo.save()
+        new_lecturer_info = Lecturer_teaching_info()
+        new_lecturer_info.credit = 0
+        new_lecturer_info.lecturer = current_lecturer
+        new_lecturer_info.save()
         
-        lecturer_info = newLecturerInfo
+        lecturer_info = new_lecturer_info
         credit_count = lecturer_info.credit
         
     return render_to_response("statistic_individual.html", 
