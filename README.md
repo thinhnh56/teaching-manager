@@ -7,22 +7,22 @@ Team members:<br>
 4. Nguyễn Hoàng Anh- anhnh55<br>
 
 
-Description about software:
-( note : run good on chrome )
- there are 5 parts in our webpage:
-    1.Subject
-    2.Lecturer
-    3.Program
-    4.Scheduler
-    5.Statistic
+Description about software:<br>
+( note : run good on chrome )<br>
+ there are 5 parts in our webpage:<br>
+    1.Subject<br>
+    2.Lecturer<br>
+    3.Program<br>
+    4.Scheduler<br>
+    5.Statistic<br>
  
- each implement different function:
-  1.Subject : display exist subjects and allow add new subject to database
-              (must create a new program first)
-  2.Lecturer : display exist lecturer and allow add new lecturer to database
-  3.Program: display exist program and allow add new program
-  4.Scheduler : 
-      -display exist schedule, add new schedule
-      -assign subjects to lecturers
-  5.Statistic :
-      -display teaching infomation of lecturers
+ each implement different function:<br>
+  1.Subject : display exist subjects and allow add new subject to database<br>
+              (must create a new program first)<br>
+  2.Lecturer : display exist lecturer and allow add new lecturer to database<br>
+  3.Program: display exist program and allow add new program<br>
+  4.Scheduler : <br>
+      -display exist schedule, add new schedule<br>
+      -assign subjects to lecturers<br>
+  5.Statistic :<br>
+      -display teaching infomation of lecturers<br>
